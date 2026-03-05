@@ -37,7 +37,7 @@ export default function WeddingDetails() {
               <div className="flex items-start gap-4">
                 <Calendar className="w-6 h-6 text-teal-500 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-sans font-semibold text-deep-black">Thursday, June 18th, 2025</p>
+                  <p className="font-sans font-semibold text-deep-black">Thursday, June 18th, 2026</p>
                 </div>
               </div>
 
@@ -90,7 +90,7 @@ export default function WeddingDetails() {
               <div className="flex items-start gap-4">
                 <Calendar className="w-6 h-6 text-onion-pink-500 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-sans font-semibold text-deep-black">Friday, July 4th, 2025</p>
+                  <p className="font-sans font-semibold text-deep-black">Friday, July 4th, 2026</p>
                 </div>
               </div>
 

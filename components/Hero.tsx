@@ -157,7 +157,7 @@ export default function Hero() {
               </div>
               <h3 className="font-display text-2xl text-teal-600 mb-2">Traditional Wedding</h3>
               <p className="font-elegant text-3xl text-deep-black mb-2">June 18th</p>
-              <p className="font-sans text-sm text-smoke">Thursday, 2025</p>
+              <p className="font-sans text-sm text-smoke">Thursday, 2026</p>
               <p className="font-sans text-sm text-smoke mt-2">10:00 AM</p>
               <div className="mt-4 pt-4 border-t border-teal-100">
                 <p className="text-xs text-onion-pink-600 font-semibold">Color Code</p>
@@ -175,7 +175,7 @@ export default function Hero() {
               </div>
               <h3 className="font-display text-2xl text-onion-pink-600 mb-2">Church Wedding</h3>
               <p className="font-elegant text-3xl text-deep-black mb-2">July 4th</p>
-              <p className="font-sans text-sm text-smoke">Friday, 2025</p>
+              <p className="font-sans text-sm text-smoke">Friday, 2026</p>
               <p className="font-sans text-sm text-smoke mt-2">11:00 AM</p>
               <div className="mt-4 pt-4 border-t border-onion-pink-100">
                 <p className="text-xs text-teal-600 font-semibold">Color Code</p>

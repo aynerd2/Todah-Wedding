@@ -16,7 +16,7 @@ export default function Footer() {
           <h3 className="font-display text-6xl md:text-7xl mb-4">TODAH</h3>
           <p className="font-elegant text-xl italic mb-2">Taibat & Oluwasegun</p>
           <p className="font-sans text-sm opacity-90 mb-8">
-            June 18 & July 4, 2025
+            June 18 & July 4, 2026
           </p>
 
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           <p className="font-sans text-sm opacity-75">
-            © 2025 TODAH Wedding. Made with love. 💕
+            © 2026 TODAH Wedding. Made with love. 💕
           </p>
         </motion.div>
       </div>
