@@ -1,28 +1,38 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gift, Copy, Check, Globe, CreditCard } from 'lucide-react'
+import { Gift, Copy, Check } from 'lucide-react'
 import { useState } from 'react'
 
-export default function Registry() {
-  const [activeTab, setActiveTab] = useState('NGN') // 'NGN' or 'UK'
-  const [copiedField, setCopiedField] = useState<string | null>(null)
+// Define the structure of our account objects
+interface AccountDetails {
+  label: string;
+  bank: string;
+  number: string;
+  name: string;
+  sortCode?: string; // Optional because only UK has it
+}
 
-  const accounts = {
-    NGN: {
-      label: "Nigeria",
-      bank: "First Bank PLC",
-      number: "3136510391",
-      name: "Ganiyu Oluwasegun David",
-    },
-    UK: {
-      label: "United Kingdom",
-      bank: "Barclays Bank",
-      number: "00309966",
-      sortCode: "20-26-78",
-      name: "Taibat Alli",
-    }
+const accounts: Record<'NGN' | 'UK', AccountDetails> = {
+  NGN: {
+    label: "Nigeria",
+    bank: "First Bank PLC",
+    number: "3136510391",
+    name: "Ganiyu Oluwasegun David",
+  },
+  UK: {
+    label: "United Kingdom",
+    bank: "Barclays Bank",
+    number: "00309966",
+    sortCode: "20-26-78",
+    name: "Taibat Alli",
   }
+}
+
+export default function Registry() {
+  // Explicitly set the state type to the keys of our accounts object
+  const [activeTab, setActiveTab] = useState<keyof typeof accounts>('NGN')
+  const [copiedField, setCopiedField] = useState<string | null>(null)
 
   const copyToClipboard = (text: string, fieldId: string) => {
     navigator.clipboard.writeText(text)
@@ -43,6 +53,9 @@ export default function Registry() {
       )}
     </button>
   )
+
+  // Memoize the current account for cleaner JSX and easier type-safety
+  const currentAccount = accounts[activeTab]
 
   return (
     <section id="registry" className="py-24 px-4 bg-[#FDFBF7]">
@@ -98,16 +111,16 @@ export default function Registry() {
                 <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Account Name</p>
-                    <p className="font-sans font-medium text-slate-800">{accounts[activeTab].name}</p>
+                    <p className="font-sans font-medium text-slate-800">{currentAccount.name}</p>
                   </div>
-                  <CopyButton text={accounts[activeTab].name} id="name" />
+                  <CopyButton text={currentAccount.name} id="name" />
                 </div>
 
                 {/* Bank Name */}
                 <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Bank</p>
-                    <p className="font-sans font-medium text-slate-800">{accounts[activeTab].bank}</p>
+                    <p className="font-sans font-medium text-slate-800">{currentAccount.bank}</p>
                   </div>
                 </div>
 
@@ -115,19 +128,19 @@ export default function Registry() {
                 <div className="flex justify-between items-center p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-teal-600 mb-1">Account Number</p>
-                    <p className="font-display text-2xl text-slate-800 tracking-tight">{accounts[activeTab].number}</p>
+                    <p className="font-display text-2xl text-slate-800 tracking-tight">{currentAccount.number}</p>
                   </div>
-                  <CopyButton text={accounts[activeTab].number} id="number" />
+                  <CopyButton text={currentAccount.number} id="number" />
                 </div>
 
                 {/* Sort Code (Only for UK) */}
-                {accounts[activeTab].sortCode && (
+                {currentAccount.sortCode && (
                   <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
                     <div>
                       <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Sort Code</p>
-                      <p className="font-sans font-medium text-slate-800">{accounts[activeTab].sortCode}</p>
+                      <p className="font-sans font-medium text-slate-800">{currentAccount.sortCode}</p>
                     </div>
-                    <CopyButton text={accounts[activeTab].sortCode} id="sort" />
+                    <CopyButton text={currentAccount.sortCode} id="sort" />
                   </div>
                 )}
               </motion.div>
