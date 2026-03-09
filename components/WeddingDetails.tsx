@@ -105,8 +105,8 @@ export default function WeddingDetails() {
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-onion-pink-500 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="font-sans font-semibold text-deep-black">RCCG Church Without Walls</p>
-                  <p className="font-sans text-sm text-smoke">PL2 2BR</p>
+                  <p className="font-sans font-semibold text-deep-black">Living stones baptist Church 1798 Catherine street</p>
+                  <p className="font-sans text-sm text-smoke">Plymouth PL12ADs</p>
                 </div>
               </div>
             </div>
