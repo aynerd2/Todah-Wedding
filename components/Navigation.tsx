@@ -43,15 +43,24 @@ export default function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Logo */}
+    
             <motion.a
-              href="#"
-              className="font-display text-2xl md:text-3xl cursor-pointer text-todah-gradient"
-              whileHover={{ scale: 1.05 }}
-              onClick={() => scrollToSection('#')}
+              href="/"
+              className="relative flex items-center justify-start cursor-pointer z-50 flex-shrink-0"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('#');
+              }}
             >
-              TODAH
+              <img
+                src="/logo2.png"
+                alt="TODAH Wedding Logo"
+                className="h-24 md:h-32 w-auto object-contain block max-w-none"
+              />
             </motion.a>
+
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">

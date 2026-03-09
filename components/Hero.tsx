@@ -1,226 +1,188 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Heart, ChevronDown, Sparkles } from 'lucide-react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { Heart, ChevronDown } from 'lucide-react'
+import Image from 'next/image'
+import { useRef } from 'react'
 
-export default function Hero() {
+export default function WeddingHero() {
+  const containerRef = useRef(null)
+  
+  // Parallax and Fade effects for the Hero content
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9])
+
   const scrollToContent = () => {
-    const element = document.getElementById('our-story')
+    const element = document.getElementById('invitation-details')
     element?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-white to-onion-pink-50 overflow-hidden pt-16">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="romantic-blur bg-gradient-to-br from-teal-400 to-teal-600"
-          style={{ width: '350px', height: '350px', top: '10%', left: '10%' }}
-          animate={{
-            x: [0, 40, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="romantic-blur bg-gradient-to-br from-onion-pink-400 to-onion-pink-600"
-          style={{ width: '400px', height: '400px', bottom: '10%', right: '10%' }}
-          animate={{
-            x: [0, -30, 0],
-            y: [0, -40, 0],
-          }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </div>
-
-      {/* Floating sparkles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            opacity: [0, 1, 0],
-            y: [-20, -60, -100],
-            scale: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 3,
-            repeat: Infinity,
-            delay: i * 0.5,
-          }}
-        >
-          <Sparkles className="w-4 h-4 text-teal-400" />
-        </motion.div>
-      ))}
-
-      {/* Main content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center space-y-8 sm:space-y-12">
-          
-          {/* Top ornament */}
+    <div ref={containerRef} className="relative bg-[#FAFAFA]">
+      
+      {/* SECTION 1: THE CINEMATIC ENCOUNTER (HERO) */}
+      {/* pt-28 ensures images clear the navbar on mobile; md:pt-16 for desktop */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28 pb-20 md:pt-16 md:pb-0">
+        
+        {/* Animated Background Gradients */}
+        <div className="absolute inset-0 z-0">
           <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="flex items-center justify-center gap-4"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="w-16 h-16 rounded-full border-2 border-teal-400 flex items-center justify-center"
-            >
-              <Heart className="w-6 h-6 text-teal-500 fill-teal-500" />
-            </motion.div>
-          </motion.div>
-
-          {/* TODAH trademark */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-          >
-            <motion.h1
-              className="font-display text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] mb-4 text-todah-gradient"
-              style={{ letterSpacing: '0.05em' }}
-            >
-              TODAH
-            </motion.h1>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-teal-500 to-onion-pink-500 rounded-full"></div>
-          </motion.div>
-
-          {/* Couples names */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="space-y-4"
-          >
-            <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-deep-black">
-              Taibat Abosede Alli
-            </h2>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="inline-block"
-            >
-              <span className="font-elegant text-4xl sm:text-5xl md:text-6xl text-teal-500 italic">
-                &
-              </span>
-            </motion.div>
-            <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-deep-black">
-              Oluwasegun David Ganiyu
-            </h2>
-          </motion.div>
-
-          {/* Families */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="max-w-3xl mx-auto"
-          >
-            <p className="font-sans text-sm sm:text-base text-smoke mb-4">
-              The Families of
-            </p>
-            <div className="space-y-2">
-              <p className="font-elegant text-xl sm:text-2xl text-deep-black">
-                Alhaji & Mrs Ismaila Alli
-              </p>
-              <p className="font-elegant text-lg text-teal-600 italic">and</p>
-              <p className="font-elegant text-xl sm:text-2xl text-deep-black">
-                Mr & Mrs Ganiyu Adio
-              </p>
-            </div>
-            <p className="font-sans text-sm sm:text-base text-smoke mt-6 italic">
-              cordially invite you to the wedding ceremony
-            </p>
-          </motion.div>
-
-          {/* Wedding dates */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4 }}
-            className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto"
-          >
-            {/* Traditional Wedding */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-2 border-teal-200 shadow-xl"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-teal-500 to-onion-pink-500 rounded-full flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white fill-white" />
-              </div>
-              <h3 className="font-display text-2xl text-teal-600 mb-2">Traditional Wedding</h3>
-              <p className="font-elegant text-3xl text-deep-black mb-2">June 18th</p>
-              <p className="font-sans text-sm text-smoke">Thursday, 2026</p>
-              <p className="font-sans text-sm text-smoke mt-2">10:00 AM</p>
-              <div className="mt-4 pt-4 border-t border-teal-100">
-                <p className="text-xs text-onion-pink-600 font-semibold">Color Code</p>
-                <p className="text-sm text-smoke">Onion Pink & Teal</p>
-              </div>
-            </motion.div>
-
-            {/* Church Wedding */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-2 border-onion-pink-200 shadow-xl"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-onion-pink-500 to-teal-500 rounded-full flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white fill-white" />
-              </div>
-              <h3 className="font-display text-2xl text-onion-pink-600 mb-2">Church Wedding</h3>
-              <p className="font-elegant text-3xl text-deep-black mb-2">July 4th</p>
-              <p className="font-sans text-sm text-smoke">Friday, 2026</p>
-              <p className="font-sans text-sm text-smoke mt-2">11:00 AM</p>
-              <div className="mt-4 pt-4 border-t border-onion-pink-100">
-                <p className="text-xs text-teal-600 font-semibold">Color Code</p>
-                <p className="text-sm text-smoke">All Shades of Blue</p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Save the date CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8 }}
-            className="pt-8"
-          >
-            <button
-              onClick={scrollToContent}
-              className="btn-primary"
-            >
-              View Details
-            </button>
-          </motion.div>
-
+            className="romantic-blur bg-teal-100/40"
+            style={{ width: '60vw', height: '60vw', top: '-10%', left: '-10%' }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 10, repeat: Infinity }}
+          />
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.button
-        onClick={scrollToContent}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
-      >
-        <motion.div
+        {/* THE MEETING CENTERPIECE */}
+        <motion.div 
+          style={{ opacity, scale }}
+          className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 w-full max-w-6xl px-4"
+        >
+          {/* GROOM SIDE */}
+          <motion.div 
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative group flex flex-col items-center"
+          >
+            {/* Responsive Frame: smaller on mobile (w-48 h-64) to prevent overlap */}
+            <div className="relative w-48 h-64 sm:w-64 sm:h-80 md:w-80 md:h-[450px] overflow-hidden rounded-t-[100px] border-8 border-white shadow-2xl">
+              <Image 
+                src="https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773077889/g1_iypc3o.jpg"
+                alt="Oluwasegun"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                priority
+              />
+            </div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-3 md:mt-4 text-center"
+            >
+              <span className="font-sans tracking-widest text-[10px] md:text-xs uppercase text-teal-600">The Groom</span>
+              <h3 className="font-elegant text-xl md:text-2xl">David</h3>
+            </motion.div>
+          </motion.div>
+
+          {/* CENTER ORNAMENT */}
+          <motion.div 
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="z-20 -my-4 md:-my-0 md:-mx-8 bg-white p-4 md:p-6 rounded-full shadow-xl border border-teal-50"
+          >
+            <Heart className="w-6 h-6 md:w-8 md:h-8 text-pink-500 fill-pink-500 animate-pulse" />
+          </motion.div>
+
+          {/* BRIDE SIDE */}
+          <motion.div 
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative group flex flex-col items-center"
+          >
+            <div className="relative w-48 h-64 sm:w-64 sm:h-80 md:w-80 md:h-[450px] overflow-hidden rounded-t-[100px] border-8 border-white shadow-2xl">
+              <Image 
+                src="https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773077889/b1_mgssbx.jpg" 
+                alt="Taibat"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                priority
+              />
+            </div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-3 md:mt-4 text-center"
+            >
+              <span className="font-sans tracking-widest text-[10px] md:text-xs uppercase text-pink-600">The Bride</span>
+              <h3 className="font-elegant text-xl md:text-2xl">Taibat</h3>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2"
+          className="absolute bottom-6 md:bottom-10 flex flex-col items-center text-slate-400 cursor-pointer z-20"
+          onClick={scrollToContent}
         >
-          <span className="text-xs font-sans text-smoke group-hover:text-teal-600 transition-colors">
-            Scroll
-          </span>
-          <ChevronDown className="w-6 h-6 text-smoke group-hover:text-teal-600 transition-colors" />
+          <span className="text-[10px] uppercase tracking-[0.3em] mb-2">The Invitation</span>
+          <ChevronDown className="w-5 h-5" />
         </motion.div>
-      </motion.button>
-    </section>
+      </section>
+
+      {/* SECTION 2: THE ELEGANT INVITATION (TEXT CONTENT) */}
+      <section 
+        id="invitation-details" 
+        className="relative min-h-screen py-24 bg-white z-30 shadow-[0_-50px_100px_rgba(0,0,0,0.05)] rounded-t-[50px] md:rounded-t-[100px]"
+      >
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-12">
+          
+          {/* Header */}
+          
+          {/* Parents Narration */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="space-y-6"
+          >
+            <p className="font-sans text-xs tracking-[0.4em] uppercase text-slate-500">The Families of</p>
+            <div className="space-y-2">
+               <h2 className="font-elegant text-3xl md:text-4xl text-slate-800">Alhaji & Mrs Ismaila Alli</h2>
+               <p className="font-elegant italic text-teal-500">and</p>
+               <h2 className="font-elegant text-3xl md:text-4xl text-slate-800">Mr & Mrs Ganiyu Adio</h2>
+            </div>
+            <p className="font-elegant text-xl md:text-2xl text-slate-600 italic pt-6">
+              Invite you to witness the union of their children
+            </p>
+          </motion.div>
+
+          {/* Event Cards */}
+          <div className="grid md:grid-cols-2 gap-8 pt-12">
+            {/* Traditional Card */}
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="bg-white p-8 rounded-[40px] border border-teal-50 shadow-xl shadow-teal-900/5 text-left space-y-4"
+            >
+              <span className="inline-block px-4 py-1 bg-teal-50 text-teal-700 rounded-full text-[10px] uppercase font-bold tracking-widest">
+                Traditional
+              </span>
+              <h3 className="font-display text-3xl text-slate-800">June 18th</h3>
+              <p className="font-sans text-slate-500 text-sm">Thursday, 2026 • 10:00 AM</p>
+              <div className="pt-2">
+                <p className="text-xs font-semibold text-pink-500 italic">Color: Onion Pink & Teal</p>
+              </div>
+            </motion.div>
+
+            {/* Church Card */}
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="bg-white p-8 rounded-[40px] border border-pink-50 shadow-xl shadow-pink-900/5 text-left space-y-4"
+            >
+              <span className="inline-block px-4 py-1 bg-pink-50 text-pink-700 rounded-full text-[10px] uppercase font-bold tracking-widest">
+                White Wedding
+              </span>
+              <h3 className="font-display text-3xl text-slate-800">July 4th</h3>
+              <p className="font-sans text-slate-500 text-sm">Saturday, 2026 • 11:00 AM</p>
+              <div className="pt-2">
+                <p className="text-xs font-semibold text-teal-600 italic">Color: All Shades of Blue</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }

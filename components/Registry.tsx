@@ -1,118 +1,145 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Gift, Copy, Check } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Gift, Copy, Check, Globe, CreditCard } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Registry() {
-  const [copied, setCopied] = useState(false)
+  const [activeTab, setActiveTab] = useState('NGN') // 'NGN' or 'UK'
+  const [copiedField, setCopiedField] = useState<string | null>(null)
 
-  const bankDetails = {
-    accountName: 'Taibat & Oluwasegun Wedding',
-    accountNumber: '1234567890',
-    bankName: 'Your Bank Name',
-    sortCode: '12-34-56',
+  const accounts = {
+    NGN: {
+      label: "Nigeria",
+      bank: "First Bank PLC",
+      number: "3136510391",
+      name: "Ganiyu Oluwasegun David",
+    },
+    UK: {
+      label: "United Kingdom",
+      bank: "Barclays Bank",
+      number: "00309966",
+      sortCode: "20-26-78",
+      name: "Taibat Alli",
+    }
   }
 
-  const copyToClipboard = (text: string) => {
+  const copyToClipboard = (text: string, fieldId: string) => {
     navigator.clipboard.writeText(text)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    setCopiedField(fieldId)
+    setTimeout(() => setCopiedField(null), 2000)
   }
+
+  const CopyButton = ({ text, id }: { text: string, id: string }) => (
+    <button
+      onClick={() => copyToClipboard(text, id)}
+      className="p-2 hover:bg-teal-100 rounded-full transition-colors group"
+      title="Copy to clipboard"
+    >
+      {copiedField === id ? (
+        <Check size={18} className="text-green-600" />
+      ) : (
+        <Copy size={18} className="text-teal-400 group-hover:text-teal-600" />
+      )}
+    </button>
+  )
 
   return (
-    <section id="registry" className="py-24 px-4 bg-gradient-to-b from-white to-teal-50">
+    <section id="registry" className="py-24 px-4 bg-[#FDFBF7]">
       <div className="max-w-4xl mx-auto">
+        
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <Gift className="w-16 h-16 mx-auto text-teal-500 mb-6" />
-          <h2 className="font-display text-5xl md:text-7xl mb-6 text-deep-black">
-            Gift Registry
+          <div className="inline-block p-4 rounded-full bg-teal-50 mb-6">
+            <Gift className="w-10 h-10 text-teal-600" />
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl mb-6 text-slate-800 italic">
+            Registry
           </h2>
-          <p className="font-elegant text-xl text-smoke italic">
-            Your presence is the greatest gift, but if you wish to bless us
+          <p className="font-elegant text-xl text-slate-600 italic max-w-2xl mx-auto">
+            Your presence at our wedding is the greatest gift we could ask for. However, if you wish to honor us with a gift, a contribution towards our new home would be sincerely appreciated.
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border-t-4 border-todah-gradient"
-        >
-          <h3 className="font-display text-3xl text-center text-teal-600 mb-8">
-            Bank Details
-          </h3>
-
-          <div className="space-y-4 max-w-md mx-auto">
-            <div className="flex justify-between items-center p-4 bg-teal-50 rounded-lg">
-              <div>
-                <p className="font-sans text-sm text-smoke mb-1">Account Name</p>
-                <p className="font-sans font-semibold text-deep-black">{bankDetails.accountName}</p>
-              </div>
-              <button
-                onClick={() => copyToClipboard(bankDetails.accountName)}
-                className="p-2 hover:bg-teal-100 rounded transition-colors"
-              >
-                {copied ? <Check size={18} className="text-teal-600" /> : <Copy size={18} className="text-teal-600" />}
-              </button>
-            </div>
-
-            <div className="flex justify-between items-center p-4 bg-teal-50 rounded-lg">
-              <div>
-                <p className="font-sans text-sm text-smoke mb-1">Account Number</p>
-                <p className="font-sans font-semibold text-deep-black">{bankDetails.accountNumber}</p>
-              </div>
-              <button
-                onClick={() => copyToClipboard(bankDetails.accountNumber)}
-                className="p-2 hover:bg-teal-100 rounded transition-colors"
-              >
-                {copied ? <Check size={18} className="text-teal-600" /> : <Copy size={18} className="text-teal-600" />}
-              </button>
-            </div>
-
-            <div className="flex justify-between items-center p-4 bg-teal-50 rounded-lg">
-              <div>
-                <p className="font-sans text-sm text-smoke mb-1">Bank Name</p>
-                <p className="font-sans font-semibold text-deep-black">{bankDetails.bankName}</p>
-              </div>
-              <button
-                onClick={() => copyToClipboard(bankDetails.bankName)}
-                className="p-2 hover:bg-teal-100 rounded transition-colors"
-              >
-                {copied ? <Check size={18} className="text-teal-600" /> : <Copy size={18} className="text-teal-600" />}
-              </button>
-            </div>
-
-            <div className="flex justify-between items-center p-4 bg-teal-50 rounded-lg">
-              <div>
-                <p className="font-sans text-sm text-smoke mb-1">Sort Code</p>
-                <p className="font-sans font-semibold text-deep-black">{bankDetails.sortCode}</p>
-              </div>
-              <button
-                onClick={() => copyToClipboard(bankDetails.sortCode)}
-                className="p-2 hover:bg-teal-100 rounded transition-colors"
-              >
-                {copied ? <Check size={18} className="text-teal-600" /> : <Copy size={18} className="text-teal-600" />}
-              </button>
-            </div>
+        <div className="bg-white rounded-[40px] shadow-xl border border-teal-50 overflow-hidden">
+          
+          {/* Tab Switcher */}
+          <div className="flex border-b border-teal-50">
+            <button 
+              onClick={() => setActiveTab('NGN')}
+              className={`flex-1 py-6 font-sans text-xs uppercase tracking-[0.3em] transition-all ${activeTab === 'NGN' ? 'bg-teal-600 text-white' : 'text-slate-400 hover:text-teal-600'}`}
+            >
+              Nigeria (NGN)
+            </button>
+            <button 
+              onClick={() => setActiveTab('UK')}
+              className={`flex-1 py-6 font-sans text-xs uppercase tracking-[0.3em] transition-all ${activeTab === 'UK' ? 'bg-teal-600 text-white' : 'text-slate-400 hover:text-teal-600'}`}
+            >
+              UK (GBP)
+            </button>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <p className="font-elegant text-2xl italic text-onion-pink-600">
-              Thank you for celebrating with us! 💝
-            </p>
-          </motion.div>
-        </motion.div>
+          {/* Content Area */}
+          <div className="p-8 md:p-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, x: activeTab === 'NGN' ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: activeTab === 'NGN' ? 20 : -20 }}
+                className="max-w-md mx-auto space-y-4"
+              >
+                {/* Account Name */}
+                <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Account Name</p>
+                    <p className="font-sans font-medium text-slate-800">{accounts[activeTab].name}</p>
+                  </div>
+                  <CopyButton text={accounts[activeTab].name} id="name" />
+                </div>
+
+                {/* Bank Name */}
+                <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Bank</p>
+                    <p className="font-sans font-medium text-slate-800">{accounts[activeTab].bank}</p>
+                  </div>
+                </div>
+
+                {/* Account Number */}
+                <div className="flex justify-between items-center p-5 bg-teal-50/50 rounded-2xl border border-teal-100">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-teal-600 mb-1">Account Number</p>
+                    <p className="font-display text-2xl text-slate-800 tracking-tight">{accounts[activeTab].number}</p>
+                  </div>
+                  <CopyButton text={accounts[activeTab].number} id="number" />
+                </div>
+
+                {/* Sort Code (Only for UK) */}
+                {accounts[activeTab].sortCode && (
+                  <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Sort Code</p>
+                      <p className="font-sans font-medium text-slate-800">{accounts[activeTab].sortCode}</p>
+                    </div>
+                    <CopyButton text={accounts[activeTab].sortCode} id="sort" />
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="text-center mt-12">
+              <p className="font-elegant text-2xl italic text-teal-800">
+                Thank you for celebrating our love! 💝
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
