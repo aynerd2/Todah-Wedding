@@ -16,8 +16,8 @@ export default function Home() {
       <Hero />
       <OurStory2/>
       <WeddingDetails />
-      <GuestWishes />
       <Registry />
+      <GuestWishes />
       <TravelAndVenue/>
       <Footer />
     </main>

@@ -140,7 +140,7 @@ export default function WeddingHero() {
           >
             <p className="font-sans text-xs tracking-[0.4em] uppercase text-slate-500">The Families of</p>
             <div className="space-y-2">
-               <h2 className="font-elegant text-3xl md:text-4xl text-slate-800">Alhaji & Mrs Ismaila Alli</h2>
+               <h2 className="font-elegant text-3xl md:text-4xl text-slate-800">Alhaji & Mrs Ismail Alli</h2>
                <p className="font-elegant italic text-teal-500">and</p>
                <h2 className="font-elegant text-3xl md:text-4xl text-slate-800">Mr & Mrs Ganiyu Adio</h2>
             </div>
@@ -157,7 +157,7 @@ export default function WeddingHero() {
               className="bg-white p-8 rounded-[40px] border border-teal-50 shadow-xl shadow-teal-900/5 text-left space-y-4"
             >
               <span className="inline-block px-4 py-1 bg-teal-50 text-teal-700 rounded-full text-[10px] uppercase font-bold tracking-widest">
-                Traditional
+                Traditional marriage rites (igbeyawo)
               </span>
               <h3 className="font-display text-3xl text-slate-800">June 18th</h3>
               <p className="font-sans text-slate-500 text-sm">Thursday, 2026 • 10:00 AM</p>

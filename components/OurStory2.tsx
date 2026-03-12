@@ -75,15 +75,12 @@ export default function OurStory() {
   const containerRef = useRef(null)
   const [activeChapter, setActiveChapter] = useState(0)
 
-  // 1. Track scroll progress of the entire section
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   })
 
-  // 2. Map the scroll progress (0 to 1) to chapter indices (0 to 7)
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // We split 100% scroll into equal chunks for each chapter
     const chapterCount = storyChapters.length
     const newIndex = Math.min(
       Math.floor(latest * chapterCount),
@@ -126,9 +123,9 @@ export default function OurStory() {
                   {chapter.text}
                 </p>
                 
-                {/* Mobile View - Shows image inline */}
+                {/* Mobile/Tablet View - Shows image inline with portrait aspect ratio */}
                 <div className="lg:hidden mt-10 p-4 bg-white shadow-xl rotate-1">
-                  <div className="relative aspect-video">
+                  <div className="relative aspect-[4/5] overflow-hidden">
                     <img src={chapter.image} alt={chapter.caption} className="w-full h-full object-cover" />
                   </div>
                   <p className="font-serif italic text-center mt-4 text-slate-800">{chapter.caption}</p>
@@ -137,7 +134,7 @@ export default function OurStory() {
             ))}
           </div>
 
-          {/* RIGHT: STICKY IMAGES */}
+          {/* RIGHT: STICKY IMAGES (desktop only) */}
           <div className="hidden lg:block sticky top-[15vh] h-[70vh] w-full">
             <div className="relative w-full h-full flex items-center justify-center">
               <AnimatePresence mode="wait">
@@ -147,14 +144,16 @@ export default function OurStory() {
                   animate={{ opacity: 1, scale: 1, rotate: (activeChapter % 2 === 0 ? -2 : 2) }}
                   exit={{ opacity: 0, scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="relative w-full max-w-[420px] aspect-[4/5] bg-white p-4 pb-20 shadow-2xl border-b-[15px] border-white"
+                  className="relative w-full max-w-[420px] aspect-[4/5] bg-white p-4 shadow-2xl border-b-[15px] border-white"
                 >
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-32 h-10 bg-teal-500/20 backdrop-blur-sm z-30 transform -rotate-2" 
-                       style={{ clipPath: "polygon(0% 0%, 100% 5%, 95% 100%, 5% 95%)" }} />
+                  <div
+                    className="absolute -top-5 left-1/2 -translate-x-1/2 w-32 h-10 bg-teal-500/20 backdrop-blur-sm z-30 transform -rotate-2"
+                    style={{ clipPath: "polygon(0% 0%, 100% 5%, 95% 100%, 5% 95%)" }}
+                  />
 
-                  <div className="relative w-full h-full overflow-hidden bg-gray-50">
-                    <img 
-                      src={storyChapters[activeChapter].image} 
+                  <div className="absolute inset-4 bottom-16 overflow-hidden bg-gray-50">
+                    <img
+                      src={storyChapters[activeChapter].image}
                       alt="Story Frame"
                       className="w-full h-full object-cover sepia-[0.1]"
                     />
@@ -172,6 +171,7 @@ export default function OurStory() {
               </AnimatePresence>
             </div>
           </div>
+
         </div>
       </div>
     </section>
