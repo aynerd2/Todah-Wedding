@@ -31,3 +31,19 @@ coverage/
 
 # Uploads
 uploads/
+
+
+# Next.js build output
+.next/
+out/
+
+# Vercel
+.vercel
+
+# Yarn
+.yarn/
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

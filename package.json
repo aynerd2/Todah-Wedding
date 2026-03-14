@@ -5,16 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node node_modules/next/dist/bin/next",
     "lint": "next lint"
   },
   "dependencies": {
+    "cloudinary": "^1.41.0",
+    "firebase": "^12.10.0",
+    "framer-motion": "^10.16.16",
+    "lucide-react": "^0.263.1",
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^10.16.16",
-    "lucide-react": "^0.263.1",
-    "cloudinary": "^1.41.0"
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
