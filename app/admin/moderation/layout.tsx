@@ -1,3 +1,6 @@
+'use client'
+
+
 // app/admin/moderation/layout.tsx (or page.tsx)
 import AdminGuard from '@/components/AdminGuard'
 

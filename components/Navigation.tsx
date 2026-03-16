@@ -55,7 +55,7 @@ export default function Navigation() {
               }}
             >
               <img
-                src="/logo2.png"
+                src="https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773654717/logo2_hzztg0.png"
                 alt="TODAH Wedding Logo"
                 className="h-24 md:h-32 w-auto object-contain block max-w-none"
               />

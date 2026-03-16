@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import { useRef, useState,} from 'react'
 
 
+
 const storyChapters = [
   {
     id: 0,
@@ -27,7 +28,7 @@ const storyChapters = [
     text: "And it came to pass in the month of August that David was appointed Prayer Coordinator within the fellowship, while Taibat served as General Secretary. The prayer unit purposed that FCN brethren should raise an altar of prayer before the Lord for 200 days. Therefore, they declared that for two hundred days the brethren should gather online at the 9th hour daily to pray. Taibat heard the voice of David leading the people in prayer daily and developed deep reverence and admiration for his consistency.",
     image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065771/w3_xocdvo.jpg",
     caption: "200 Days of Prayer",
-    date: "August 2024"
+    date: "2024"
   },
   {
     id: 3,
@@ -41,7 +42,7 @@ const storyChapters = [
     id: 4,
     title: "Chapter 5 — ‘The Bestie’ joke",
     text: "And it came to pass in the month of September 2024 that David called Taibat again, and they spoke concerning the fellowship, but their conversation continued longer than was usual. And Taibat said unto David, “Let us speak by video.” They therefore spoke face to face for nearly an hour. And when their words had quieted, they remained upon the call, each going about their own matters while the other stayed present. And Taibat remembered how she often did this with her closest friend. And Taibat said in jest unto David, “Well then—you must be my Bestie.” And David received the appellation with laughter. And from that day forward Taibat and David called one another Bestie, though neither of them yet knew what the Lord was preparing.",
-    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065770/ksom_g6lgic.jpg",
+    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065771/bestie-wedding_higa75.jpg",
     caption: "‘The Bestie’ joke",
     date: "September 2024"
   },
@@ -49,23 +50,23 @@ const storyChapters = [
     id: 5,
     title: "Chapter 6 — The Koinonia School of Ministry (KSOM) Admission",
     text: "And it came to pass in the month of January, in the year 2025, that David sent a message unto Taibat, saying, “Congratulations.” And Taibat asked David, “Why do you congratulate me?” And David answered, “Because you have been accepted into KSOM.\" For Taibat had applied unto this course, which was a gathering of teaching and ministry for three days. And Taibat marvelled and asked David, “How do you know this?” And David replied, “I saw your name on the admissions page.” And Taibat was astonished that David had noticed.",
-    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065771/first-date_jsuvlg.jpg",
-    caption: "KSOM Admission",
+    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065770/ksom_g6lgic.jpg",
+    caption: "KSOM 2025",
     date: "January 2025"
   },
   {
     id: 6,
     title: "Chapter 7 — The Journey to London",
     text: "Now the school was held in the great city of London. Neither Taibat nor David lived there. And the friends of Taibat who lived near the city were yet far from the place of gathering. Therefore, Taibat and David joined themselves together with certain friends and rented a house for the three days. And their company numbered six. And the men dwelt on one side of the house, and the women on another but each damsel paired up with a young man and then again; David and Taibat were paired. For though they had known each other before, it was during this time that their friendship deepened greatly. And after these things Taibat and David began to speak more often, even almost every day.",
-    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065772/w7_itwi3v.jpg",
-    caption: "The Journey to London",
+    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773653732/uu_lrfosv.jpg",
+    caption: "KSOM 2025",
     date: "2025"
   },
   {
     id: 7,
     title: "Chapter 8 — From Bestie to Courtship",
     text: "And after a season David spoke plainly unto Taibat and said, “Will you do life with me?” And by this David asked that Taibat should be his beloved. But Taibat and David were wise in their hearts. Therefore, they did not take the matter lightly. Instead, they both took time to pray and sought counsel from their mentors. And Taibat and David were given assignments to complete. And they attended sessions of counsel, both briefing and debriefing, that their hearts might be prepared.",
-    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065772/fave-memories_smdvzb.jpg",
+    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773654672/uu2_qcxvny.jpg",
     caption: "The Proposal",
     date: "2025"
   },
@@ -78,7 +79,6 @@ const storyChapters = [
     date: "April 2025"
   }
 ];
-
 
 export default function OurStory() {
   const containerRef = useRef(null)
