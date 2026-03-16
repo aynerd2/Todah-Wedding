@@ -18,7 +18,7 @@ const storyChapters = [
     id: 1,
     title: "Chapter 2 — I have entered your DM",
     text: "But a few days after these things, David texted Taibat and said, “Sister Taibat, I have come into your DM.” And he asked her many questions, saying, “Where are you from? How old are you?” And Taibat answered him and introduced herself. And they spoke for a little while. Yet after this their conversation rested for a season, and many days passed without much speaking between them.",
-    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065770/meet-2_okuqjt.jpg",
+    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773664252/IMG_6455.jpg_aj0ckj.jpg",
     caption: "The DM",
     date: "April 2024"
   },
@@ -34,7 +34,7 @@ const storyChapters = [
     id: 3,
     title: "Chapter 4 — The memorised contact number",
     text: "Now it came to pass that one day David called Taibat from his place of work. And when she answered, David said with surprise, “Ah! I am so sorry—oh my God, is that you?” For he had called her from a landline, using a number that seemed strange unto her. And David said unto Taibat, “I had to memorise your number.” And Taibat wondered within herself, saying, “Why has David memorised my number? For we are not even close, neither are we friends.” Yet David asked her for help concerning sending reminders for prayers, and Taibat helped him. And from time-to-time David would call again, often to catch up on FCN meetings missed and thus their conversations slowly increased.",
-    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773065771/bestie-wedding_higa75.jpg",
+    image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773664132/IMG_8132.JPG_x37tas.jpg",
     caption: "The memorised contact number",
     date: "2024"
   },
@@ -56,7 +56,7 @@ const storyChapters = [
   },
   {
     id: 6,
-    title: "Chapter 7 — The Journey to London",
+    title: "Chapter 7 — KSOM 2025",
     text: "Now the school was held in the great city of London. Neither Taibat nor David lived there. And the friends of Taibat who lived near the city were yet far from the place of gathering. Therefore, Taibat and David joined themselves together with certain friends and rented a house for the three days. And their company numbered six. And the men dwelt on one side of the house, and the women on another but each damsel paired up with a young man and then again; David and Taibat were paired. For though they had known each other before, it was during this time that their friendship deepened greatly. And after these things Taibat and David began to speak more often, even almost every day.",
     image: "https://res.cloudinary.com/dq8jo2bf7/image/upload/v1773653732/uu_lrfosv.jpg",
     caption: "KSOM 2025",
