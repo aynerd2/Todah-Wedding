@@ -214,7 +214,7 @@ export default function WeddingHero() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <p className="font-sans text-xs tracking-[0.5em] uppercase text-slate-400 font-bold">In the name of God</p>
+            {/* <p className="font-sans text-xs tracking-[0.5em] uppercase text-slate-400 font-bold">In the name of God</p> */}
             <div className="space-y-4">
                <h2 className="font-elegant text-3xl md:text-5xl text-slate-800 leading-tight">Alhaji & Mrs Ismail Alli</h2>
                <p className="font-elegant italic text-teal-500 text-2xl">&</p>
@@ -241,7 +241,7 @@ export default function WeddingHero() {
               </div>
               <div className="pt-4 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-pink-400"></div>
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Theme: Onion Pink & Teal</p>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Color Code: Onion Pink & Teal</p>
               </div>
             </motion.div>
 
@@ -259,7 +259,7 @@ export default function WeddingHero() {
               </div>
               <div className="pt-4 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-teal-400"></div>
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Theme: All Shades of Blue</p>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-tighter">Color Code: All Shades of Blue</p>
               </div>
             </motion.div>
           </div>
