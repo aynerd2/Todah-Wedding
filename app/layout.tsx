@@ -3,7 +3,7 @@ import './globals.css'
 import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
-  title: 'TODAH - Taibat & Oluwasegun Wedding',
+  title: 'TODAH - Taibat & David Wedding',
   description: 'Join us as we celebrate our love on June 18th & July 4th, 2026',
 }
 

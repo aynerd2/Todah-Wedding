@@ -137,7 +137,7 @@ export default function OurStory() {
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <img src={chapter.image} alt={chapter.caption} className="w-full h-full object-cover" />
                   </div>
-                  <p className="font-serif italic text-center mt-4 text-slate-800">{chapter.caption}</p>
+                  {/* <p className="font-serif italic text-center mt-4 text-slate-800">{chapter.caption}</p> */}
                 </div>
               </div>
             ))}
@@ -169,12 +169,12 @@ export default function OurStory() {
                   </div>
 
                   <div className="absolute bottom-5 left-0 right-0 text-center px-4">
-                    <p className="font-serif italic text-2xl text-slate-800 leading-tight">
+                    {/* <p className="font-serif italic text-2xl text-slate-800 leading-tight">
                       {storyChapters[activeChapter].caption}
-                    </p>
-                    <p className="text-[10px] tracking-widest uppercase text-teal-600 mt-2 font-bold">
+                    </p> */}
+                    {/* <p className="text-[10px] tracking-widest uppercase text-teal-600 mt-2 font-bold">
                       {storyChapters[activeChapter].date}
-                    </p>
+                    </p> */}
                   </div>
                 </motion.div>
               </AnimatePresence>
