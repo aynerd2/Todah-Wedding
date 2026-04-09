@@ -1,16 +1,15 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gift, Copy, Check } from 'lucide-react'
+import { Gift, Copy, Check, ShoppingBag } from 'lucide-react'
 import { useState } from 'react'
 
-// Define the structure of our account objects
 interface AccountDetails {
   label: string;
   bank: string;
   number: string;
   name: string;
-  sortCode?: string; // Optional because only UK has it
+  sortCode?: string;
 }
 
 const accounts: Record<'NGN' | 'UK', AccountDetails> = {
@@ -29,8 +28,9 @@ const accounts: Record<'NGN' | 'UK', AccountDetails> = {
   }
 }
 
+const AMAZON_REGISTRY_URL = "https://www.amazon.co.uk/hz/wishlist/ls/112T1QULFVCEF?ref_=wl_share"
+
 export default function Registry() {
-  // Explicitly set the state type to the keys of our accounts object
   const [activeTab, setActiveTab] = useState<keyof typeof accounts>('NGN')
   const [copiedField, setCopiedField] = useState<string | null>(null)
 
@@ -54,13 +54,12 @@ export default function Registry() {
     </button>
   )
 
-  // Memoize the current account for cleaner JSX and easier type-safety
   const currentAccount = accounts[activeTab]
 
   return (
     <section id="registry" className="py-24 px-4 bg-[#FDFBF7]">
       <div className="max-w-4xl mx-auto">
-        
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -79,17 +78,53 @@ export default function Registry() {
           </p>
         </motion.div>
 
+        {/* Amazon Registry Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-6 bg-white rounded-[40px] shadow-xl border border-amber-100 overflow-hidden"
+        >
+          <div className="p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
+              <div className="p-4 rounded-full bg-amber-50 shrink-0">
+                <ShoppingBag className="w-7 h-7 text-amber-500" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-amber-500 font-black mb-1">
+                  Amazon Wishlist
+                </p>
+                <h3 className="font-sans font-bold text-slate-800 text-lg">
+                  Shop our Amazon Registry
+                </h3>
+                <p className="font-sans text-slate-500 text-sm mt-0.5">
+                  Browse and send gifts directly from our curated wishlist.
+                </p>
+              </div>
+            </div>
+            <a
+              href={AMAZON_REGISTRY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-block px-8 py-3.5 rounded-full text-sm font-black uppercase tracking-widest bg-amber-400 text-white hover:bg-amber-500 shadow-md hover:shadow-amber-200 transition-all"
+            >
+              View Wishlist
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Bank Transfer Card */}
         <div className="bg-white rounded-[40px] shadow-xl border border-teal-50 overflow-hidden">
-          
+
           {/* Tab Switcher */}
           <div className="flex border-b border-teal-50">
-            <button 
+            <button
               onClick={() => setActiveTab('NGN')}
               className={`flex-1 py-6 font-sans text-xs uppercase tracking-[0.3em] transition-all ${activeTab === 'NGN' ? 'bg-teal-600 text-white' : 'text-slate-400 hover:text-teal-600'}`}
             >
               Nigeria (NGN)
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab('UK')}
               className={`flex-1 py-6 font-sans text-xs uppercase tracking-[0.3em] transition-all ${activeTab === 'UK' ? 'bg-teal-600 text-white' : 'text-slate-400 hover:text-teal-600'}`}
             >
@@ -133,7 +168,7 @@ export default function Registry() {
                   <CopyButton text={currentAccount.number} id="number" />
                 </div>
 
-                {/* Sort Code (Only for UK) */}
+                {/* Sort Code (UK only) */}
                 {currentAccount.sortCode && (
                   <div className="flex justify-between items-center p-5 bg-slate-50 rounded-2xl border border-slate-100">
                     <div>
@@ -153,6 +188,7 @@ export default function Registry() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   )
