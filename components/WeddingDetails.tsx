@@ -192,7 +192,7 @@ export default function WeddingDetails() {
               <div className="flex items-start gap-5">
                 <Calendar className="w-6 h-6 text-onion-pink-500 mt-1" />
                 <div>
-                  <p className="font-sans font-bold text-lg text-deep-black">Friday, July 4, 2026</p>
+                  <p className="font-sans font-bold text-lg text-deep-black">Saturday, July 4, 2026</p>
                   <p className="text-sm text-smoke">11:00 AM Prompt</p>
                 </div>
               </div>
